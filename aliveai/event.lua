@@ -91,7 +91,7 @@ aliveai.sleep=function(self,set)
 	local t=minetest.get_timeofday()
 	local sl=((self.light>0 and (t>=0.8 or t<0.2)) or (self.light<0 and (t<=0.8 and t>0.2)))
 	if not self.sleeping and sl==true then
-		local l=minetest.get_node_light(self.object:get_pos())
+		local l=minetest.get_node_light(self.object:get_pos()) or 0
 		if (self.light>0 and l>=self.lowestlight) or (self.light<0 and l<=self.lowestlight) then
 			aliveai.showstatus(self,"check for beds")
 			local pos=aliveai.roundpos(self.object:get_pos())
